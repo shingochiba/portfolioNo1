@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>月間サマリー</title>
+</head>
+<body>
+    <h1>月間サマリー</h1>
+    <form method="POST">
+        <label for="month">月:</label>
+        <input type="month" name="month" required>
+        <label for="income">入金額:</label>
+        <input type="number" name="income" step="0.01" required>
+        <label for="theoretical_balance">理論残高:</label>
+        <input type="number" name="theoretical_balance" step="0.01" required>
+        <label for="actual_cash">実際の現金金額:</label>
+        <input type="number" name="actual_cash" step="0.01" required>
+        <button type="submit">サマリーを追加</button>
+    </form>
+
+    <h2>支出を追加</h2>
+    <form method="POST" action="{{ url_for('add_expense') }}">
+        <label for="date">日付:</label>
+        <input type="date" name="date" required>
+        <label for="amount">支出額:</label>
+        <input type="number" name="amount" step="0.01" required>
+        <label for="description">摘要:</label>
+        <input type="text" name="description" required>
+        <button type="submit">支出を追加</button>
+    </form>
+
+    <h2>サマリー一覧</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>月</th>
+                <th>入金額</th>
+                <th>理論残高</th>
+                <th>実際の現金金額</th>
+                <th>残高差額</th>
+                <th>支出一覧</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for summary in summaries %}
+            <tr>
+                <td>{{ summary.month }}</td>
+                <td>{{ summary.income }}</td>
+                <td>{{ summary.theoretical_balance }}</td>
+                <td>{{ summary.actual_cash }}</td>
+                <td>{{ summary.balance_difference }}</td>
+                <td>
+                    <ul>
+                        {% for expense in summary.expenses %}
+                        <li>{{ expense.date }} - {{ expense.amount }}円 - {{ expense.description }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

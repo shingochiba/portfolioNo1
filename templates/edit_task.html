@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タスク編集</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='edit_task.css') }}">
+</head>
+<body>
+    <h1>タスクを編集</h1>
+
+    <form action="/edit_task/{{ task.id }}" method="POST" class="form-container">
+        <div class="form-group">
+            <label for="task_name">タスク名:</label>
+            <input type="text" name="task_name" value="{{ task.name }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="importance">重要度:</label>
+            <select name="importance">
+                <option value="high" {% if task.importance == 'high' %}selected{% endif %}>重要</option>
+                <option value="low" {% if task.importance == 'low' %}selected{% endif %}>重要ではない</option>
+            </select>
+
+            <label for="urgency">緊急度:</label>
+            <select name="urgency">
+                <option value="high" {% if task.urgency == 'high' %}selected{% endif %}>緊急</option>
+                <option value="low" {% if task.urgency == 'low' %}selected{% endif %}>緊急ではない</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="status">ステータス:</label>
+            <select name="status">
+                <option value="未着手" {% if task.status == '未着手' %}selected{% endif %}>未着手</option>
+                <option value="実行中" {% if task.status == '実行中' %}selected{% endif %}>実行中</option>
+                <option value="確認中" {% if task.status == '確認中' %}selected{% endif %}>確認中</option>
+                <option value="完了" {% if task.status == '完了' %}selected{% endif %}>完了</option>
+            </select>
+
+            <label for="due_date">期限:</label>
+            <input type="date" name="due_date" value="{{ task.due_date }}">
+        </div>
+
+        <div class="form-group">
+            <label for="memo">メモ:</label>
+            <textarea name="memo" rows="10" cols="50" placeholder="ここにメモを入力してください">{% if task.memo %}{{ task.memo }}{% else %}{% endif %}</textarea><br><br>
+        </div>
+
+        <button type="submit">保存</button>
+    </form>
+
+    <a href="/">戻る</a>
+</body>
+</html>

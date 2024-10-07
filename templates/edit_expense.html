@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支出の編集</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='budget.css') }}">
+</head>
+<body>
+    <h1>支出の編集</h1>
+    <form method="POST">
+        <label for="amount">金額:</label>
+        <input type="text" name="amount" value="{{ expense.amount }}" required>
+        
+        <label for="category">カテゴリー:</label>
+        <input type="text" name="category" value="{{ expense.category }}" required>
+        
+        <label for="date">日付:</label>
+        <input type="date" name="date" value="{{ expense.date.strftime('%Y-%m-%d') }}" required>
+        
+        <label for="description">説明:</label>
+        <textarea name="description">{{ expense.description }}</textarea>
+        
+        <button type="submit">更新</button>
+    </form>
+    
+    <a href="{{ url_for('expense_list') }}">支出リストに戻る</a>
+</body>
+</html>

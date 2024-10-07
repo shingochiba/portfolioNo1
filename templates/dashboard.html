@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ダッシュボード</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+    <header>
+        <div class="user-info">
+            <p>ログイン中: {{ current_user.username }}</p>
+            <form action="{{ url_for('logout') }}" method="POST">
+                <button type="submit">ログアウト</button>
+            </form>
+        </div>
+    </header>
+
+    <h1>ダッシュボード</h1>
+    
+    {% if current_user.role == 'admin' %}
+    <div class="menu-container">
+        <h2>管理メニュー</h2>
+        <div class="menu">
+            <a href="{{ url_for('register') }}" class="menu-button">新規ユーザー登録</a>
+            <a href="{{ url_for('user_management') }}" class="menu-button">ユーザー管理</a>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="menu-container">
+        <h2>ユーザーメニュー</h2>
+        <div class="menu">
+            <a href="{{ url_for('index') }}" class="menu-button">タスク管理画面</a>
+            <a href="{{ url_for('expense_list') }}" class="menu-button">家計簿</a>
+        </div>
+    </div>
+</body>
+</html>

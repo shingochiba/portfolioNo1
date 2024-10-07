@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アイゼンハワー・マトリックス</title>
+    <!-- CSSファイルのリンク -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='matrix.css') }}">
+</head>
+<body>
+    <header>
+        <div class="user-info">
+            <p>ログイン中: {{ current_user.username }} (権限: {{ current_user.role }})</p>
+            <form action="{{ url_for('logout') }}" method="POST">
+                <button type="submit">ログアウト</button>
+            </form>
+            <a href="/dashboard" class="button">ダッシュボードへ戻る</a>
+        </div>
+    </header>
+
+    <h1>アイゼンハワー・マトリックス</h1>
+    <form action="/add_task" method="POST">
+        <input type="text" name="task_name" placeholder="タスク名" required>
+        <select name="importance">
+            <option value="high">重要</option>
+            <option value="low">重要ではない</option>
+        </select>
+        <select name="urgency">
+            <option value="high">緊急</option>
+            <option value="low">緊急ではない</option>
+        </select>
+        <select name="status">
+            <option value="未着手">未着手</option>
+            <option value="実行中">実行中</option>
+            <option value="確認中">確認中</option>
+            <option value="完了">完了</option>
+        </select>
+        <input type="date" name="due_date" required>
+        <button type="submit">タスクを追加</button>
+    </form>
+
+    <div class="matrix">
+        <!-- 重要 & 緊急 -->
+        <div class="quadrant">
+            <h2>重要 & 緊急</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>タスク名</th>
+                        <th>ステータス</th>
+                        <th>期限</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks if task.importance == 'high' and task.urgency == 'high' %}
+                    <tr class="{% if task.due_date and task.due_date < current_date %}overdue{% endif %}">
+                        <td>{{ task.name }}</td>
+                        <td>{{ task.status }}</td>
+                        <td>{{ task.due_date }}</td>
+                        <td>
+                            <a href="/edit_task/{{ task.id }}">編集</a> |
+                            {% if current_user.role == 'admin' %}
+                            <a href="/delete_task/{{ task.id }}" onclick="return confirmDelete()">削除</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 重要だが緊急ではない -->
+        <div class="quadrant">
+            <h2>重要だが緊急ではない</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>タスク名</th>
+                        <th>ステータス</th>
+                        <th>期限</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks if task.importance == 'high' and task.urgency == 'low' %}
+                    <tr class="{% if task.due_date and task.due_date < current_date %}overdue{% endif %}">
+                        <td>{{ task.name }}</td>
+                        <td>{{ task.status }}</td>
+                        <td>{{ task.due_date }}</td>
+                        <td>
+                            <a href="/edit_task/{{ task.id }}">編集</a> |
+                            {% if current_user.role == 'admin' %}
+                            <a href="/delete_task/{{ task.id }}" onclick="return confirmDelete()">削除</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 重要ではないが緊急 -->
+        <div class="quadrant">
+            <h2>重要ではないが緊急</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>タスク名</th>
+                        <th>ステータス</th>
+                        <th>期限</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks if task.importance == 'low' and task.urgency == 'high' %}
+                    <tr class="{% if task.due_date and task.due_date < current_date %}overdue{% endif %}">
+                        <td>{{ task.name }}</td>
+                        <td>{{ task.status }}</td>
+                        <td>{{ task.due_date }}</td>
+                        <td>
+                            <a href="/edit_task/{{ task.id }}">編集</a> |
+                            {% if current_user.role == 'admin' %}
+                            <a href="/delete_task/{{ task.id }}" onclick="return confirmDelete()">削除</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 重要でも緊急でもない -->
+        <div class="quadrant">
+            <h2>重要でも緊急でもない</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>タスク名</th>
+                        <th>ステータス</th>
+                        <th>期限</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks if task.importance == 'low' and task.urgency == 'low' %}
+                    <tr class="{% if task.due_date and task.due_date < current_date %}overdue{% endif %}">
+                        <td>{{ task.name }}</td>
+                        <td>{{ task.status }}</td>
+                        <td>{{ task.due_date }}</td>
+                        <td>
+                            <a href="/edit_task/{{ task.id }}">編集</a> |
+                            {% if current_user.role == 'admin' %}
+                            <a href="/delete_task/{{ task.id }}" onclick="return confirmDelete()">削除</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+    function confirmDelete() {
+        return confirm("本当に削除してもよろしいですか？");
+    }
+    </script>
+
+</body>
+</html>

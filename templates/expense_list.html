@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家計簿</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='budget.css') }}">
+</head>
+<body>
+    <h1>家計簿</h1>
+
+    <!-- 残高の表示 -->
+    <h2>残高: ¥{{ total_balance | format_balance }}</h2>
+    <!-- 支出合計の表示 -->
+    <h2>支出合計: ¥{{ total_expense | format_balance }}</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>日付</th>
+                <th>金額</th>
+                <th>カテゴリー</th>
+                <th>説明</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for expense in expenses %}
+            <tr>
+                <td>{{ expense.date.strftime('%Y-%m-%d') }}</td>
+                <td>¥{{ expense.amount | format_balance }}</td>
+                <td>{{ expense.category }}</td>
+                <td>{{ expense.description }}</td>
+                <td>
+                    <a href="{{ url_for('edit_expense', expense_id=expense.id) }}">編集</a> |
+                    <form action="{{ url_for('delete_expense', expense_id=expense.id) }}" method="POST" style="display:inline;">
+                        <button type="submit" onclick="return confirm('本当に削除しますか？')">削除</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('add_expense') }}" class="button">支出を追加</a>
+    <a href="{{ url_for('dashboard') }}" class="button">ダッシュボードへ戻る</a>
+
+</body>
+</html>

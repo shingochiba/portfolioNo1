@@ -1,0 +1,130 @@
+/* 全体のスタイル */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* 見出しのスタイル */
+h1 {
+    text-align: center;
+    color: #4CAF50;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* テーブルのスタイル */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* テーブルに影を追加 */
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* 行ホバー時の背景色 */
+}
+
+/* ボタンのスタイル */
+.button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 20px;
+    margin-right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #45a049; /* ホバー時の色 */
+}
+
+/* 操作ボタンのスタイル */
+form button {
+    padding: 6px 10px;
+    background-color: #f44336; /* 赤色 */
+    color: white;
+    border: none; /* 枠線を消す */
+    border-radius: 5px; /* 角を丸くする */
+    cursor: pointer; /* カーソルをポインタに */
+    outline: none; /* フォーカス時のアウトラインを消す */
+}
+
+form button:hover {
+    background-color: #c62828; /* 赤の濃い色 */
+}
+
+/* モバイル向けのレスポンシブ対応 */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    .button {
+        font-size: 14px;
+    }
+}
+
+/* フォームのスタイル */
+form {
+    max-width: 600px; /* 最大幅を設定 */
+    margin: 0 auto; /* 中央寄せ */
+    background-color: #fff; /* 背景を白に */
+    padding: 20px; /* 内側の余白を追加 */
+    border-radius: 8px; /* 角を丸く */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 影を追加 */
+}
+
+/* 各フィールドのスタイル */
+label {
+    display: block;
+    margin-bottom: 5px; /* ラベルとフィールドの間にスペース */
+}
+
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+    width: 100%; /* 幅を100%に */
+    padding: 10px; /* 内側の余白を追加 */
+    margin-bottom: 15px; /* 下部のスペースを追加 */
+    border: 1px solid #ccc; /* 枠線を追加 */
+    border-radius: 4px; /* 角を丸く */
+}
+
+/* リンクのスタイル */
+a.button {
+    display: inline-block; /* インラインブロック */
+    margin-top: 20px; /* 上部のスペースを追加 */
+    padding: 10px 15px; /* 内側の余白を追加 */
+    background-color: #007bff; /* リンクの背景色 */
+    color: white; /* リンクのテキスト色 */
+    text-decoration: none; /* 下線を消す */
+    border-radius: 4px; /* 角を丸く */
+}
+
+a.button:hover {
+    background-color: #0056b3; /* ホバー時の色 */
+}

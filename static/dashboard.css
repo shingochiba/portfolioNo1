@@ -1,0 +1,54 @@
+/* ヘッダーのスタイル */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;  /* 背景色を淡いグレーに */
+    padding: 10px;
+    border-bottom: 2px solid #ccc;  /* 下に境界線を追加 */
+}
+
+/* ユーザー情報のスタイル */
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+/* ユーザー情報のテキストスタイル */
+.user-info p {
+    margin: 0 10px 0 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* メニューコンテナのスタイル */
+.menu-container {
+    margin: 20px 0;
+}
+
+/* メニューヘッダーのスタイル */
+.menu-container h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* メニューのボタンスタイル */
+.menu {
+    display: flex;
+    gap: 10px;
+}
+
+/* ボタンのスタイル */
+.menu-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;  /* ボタンの背景色 */
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-button:hover {
+    background-color: #45a049;  /* ホバー時のボタン色 */
+}
+

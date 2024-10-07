@@ -1,0 +1,66 @@
+/* 全体のスタイル */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* 薄いグレーの背景 */
+    margin: 0;
+    padding: 20px;
+}
+
+/* フォームコンテナ */
+.form-container {
+    background-color: white; /* フォームの背景色 */
+    border-radius: 5px; /* 角を丸める */
+    padding: 20px; /* 内側の余白 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 影を追加 */
+    max-width: 400px; /* 最大幅 */
+    margin: auto; /* 中央寄せ */
+}
+
+/* フォームグループ */
+.form-group {
+    margin-bottom: 15px; /* 各要素の下に余白 */
+}
+
+/* ラベルのスタイル */
+label {
+    display: block; /* ブロック要素に */
+    margin-bottom: 5px; /* 下に余白 */
+}
+
+/* 入力フィールドのスタイル */
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%; /* 幅を100%に */
+    padding: 10px; /* 内側の余白 */
+    border: 1px solid #ccc; /* 境界線 */
+    border-radius: 5px; /* 角を丸める */
+}
+
+/* ボタンのスタイル */
+button {
+    background-color: #007bff; /* ボタンの背景色 */
+    color: white; /* ボタンの文字色 */
+    border: none; /* 境界線をなしに */
+    border-radius: 5px; /* 角を丸める */
+    padding: 10px 15px; /* 内側の余白 */
+    cursor: pointer; /* カーソルをポインターに */
+    font-size: 16px; /* フォントサイズ */
+}
+
+button:hover {
+    background-color: #0056b3; /* ホバー時の色 */
+}
+
+/* リンクのスタイル */
+a {
+    display: block; /* ブロック要素に */
+    margin-top: 15px; /* 上に余白 */
+    text-align: center; /* 中央寄せ */
+    color: #007bff; /* リンクの色 */
+    text-decoration: none; /* 下線をなしに */
+}
+
+a:hover {
+    text-decoration: underline; /* ホバー時の下線 */
+}
