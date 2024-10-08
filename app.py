@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request, flash, abort
-from markupsafe import Markup  # ここを修正
+from markupsafe import Markup
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_migrate import Migrate
@@ -26,8 +26,8 @@ migrate = Migrate(app, db)
 def format_balance(value):
     # 値がNoneの場合は0を返す
     if value is None:
-        return 0  # ここは整数を返す
-    return f"{value:,.0f}"  # '¥'をここでは返さない
+        return "¥0"
+    return f"{value:,.0f}"  # 小数点以下を表示しない場合は0を指定
 
 # タスクのデータベースモデル
 class Task(db.Model):

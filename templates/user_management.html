@@ -3,11 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ユーザー管理</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='user_management.css') }}">
+    <title>ユーザー管理</title>
 </head>
 <body>
     <h1>ユーザー管理</h1>
+
+    <!-- フラッシュメッセージ -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
     <table>
         <thead>
             <tr>
@@ -30,14 +42,15 @@
                     </form>
                 </td>
                 <td>
-                    <form action="{{ url_for('delete_user', user_id=user.id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
-                        <button type="submit">削除</button>
+                    <form action="{{ url_for('delete_user', user_id=user.id) }}" method="POST" style="display:inline;">
+                        <button type="submit" onclick="return confirm('本当に削除しますか？')">削除</button>
                     </form>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    <a href="/dashboard">戻る</a>
+
+    <a href="{{ url_for('dashboard') }}">ダッシュボードへ戻る</a>
 </body>
 </html>

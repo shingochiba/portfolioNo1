@@ -8,6 +8,16 @@
 </head>
 <body>
     <h1>新規ユーザー登録</h1>
+        <!-- フラッシュメッセージの表示 -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                    <div class="flash-message">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
     <form method="POST" class="form-container">
         <div class="form-group">
             <label for="username">ユーザー名</label>
