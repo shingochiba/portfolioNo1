@@ -37,3 +37,16 @@ button {
 button:hover {
     background-color: #0056b3; /* ホバー時の色 */
 }
+
+.flashes {
+    list-style-type: none;
+    padding: 10px;
+    background-color: #f8d7da; /* 背景色 */
+    color: #721c24; /* テキスト色 */
+    border: 1px solid #f5c6cb; /* 境界線の色 */
+    margin-bottom: 20px; /* 下部のスペース */
+}
+
+.flashes li {
+    margin: 5px 0; /* 各メッセージの間にスペース */
+}

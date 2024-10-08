@@ -64,3 +64,16 @@ a {
 a:hover {
     text-decoration: underline; /* ホバー時の下線 */
 }
+
+.flash-messages {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #4CAF50; /* 緑色の枠線 */
+    background-color: #dff0d8; /* 薄い緑の背景色 */
+    color: #3c763d; /* テキスト色 */
+    border-radius: 5px; /* 角を丸くする */
+}
+
+.flash-message {
+    margin: 5px 0; /* 各メッセージの間にスペース */
+}

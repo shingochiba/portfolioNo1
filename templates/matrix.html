@@ -59,9 +59,9 @@
                         <td>{{ task.status }}</td>
                         <td>{{ task.due_date }}</td>
                         <td>
-                            <a href="/edit_task/{{ task.id }}">編集</a> |
+                            <a href="/edit_task/{{ task.id }}">編集</a>
                             {% if current_user.role == 'admin' %}
-                            <a href="/delete_task/{{ task.id }}" onclick="return confirmDelete()">削除</a>
+                            <a href="/delete_task/{{ task.id }}" onclick="return confirmDelete()">| 削除</a>
                             {% endif %}
                         </td>
                     </tr>
@@ -89,9 +89,9 @@
                         <td>{{ task.status }}</td>
                         <td>{{ task.due_date }}</td>
                         <td>
-                            <a href="/edit_task/{{ task.id }}">編集</a> |
+                            <a href="/edit_task/{{ task.id }}">編集</a>
                             {% if current_user.role == 'admin' %}
-                            <a href="/delete_task/{{ task.id }}" onclick="return confirmDelete()">削除</a>
+                            <a href="/delete_task/{{ task.id }}" onclick="return confirmDelete()">| 削除</a>
                             {% endif %}
                         </td>
                     </tr>
@@ -119,9 +119,9 @@
                         <td>{{ task.status }}</td>
                         <td>{{ task.due_date }}</td>
                         <td>
-                            <a href="/edit_task/{{ task.id }}">編集</a> |
+                            <a href="/edit_task/{{ task.id }}">編集</a>
                             {% if current_user.role == 'admin' %}
-                            <a href="/delete_task/{{ task.id }}" onclick="return confirmDelete()">削除</a>
+                            <a href="/delete_task/{{ task.id }}" onclick="return confirmDelete()">| 削除</a>
                             {% endif %}
                         </td>
                     </tr>
@@ -149,9 +149,9 @@
                         <td>{{ task.status }}</td>
                         <td>{{ task.due_date }}</td>
                         <td>
-                            <a href="/edit_task/{{ task.id }}">編集</a> |
+                            <a href="/edit_task/{{ task.id }}">編集</a> 
                             {% if current_user.role == 'admin' %}
-                            <a href="/delete_task/{{ task.id }}" onclick="return confirmDelete()">削除</a>
+                            <a href="/delete_task/{{ task.id }}" onclick="return confirmDelete()">| 削除</a>
                             {% endif %}
                         </td>
                     </tr>
